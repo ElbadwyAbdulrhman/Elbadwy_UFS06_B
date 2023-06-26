@@ -9,7 +9,7 @@ import java.net.Socket;
 // and type in console: server will receive.
 // it will NOT block socket (for now..) when timeout.
 
-public class App
+public class ServerTcp
 {
     static final int portNumber = 1234;
 
@@ -34,8 +34,8 @@ public class App
                 e.printStackTrace();
             }
 
-            ClientHandler clientHandler = new ClientHandler(clientSocket);
-            Thread newThred = new Thread(clientHandler);
+            TcpClientHandler tcpClientHandler = new TcpClientHandler(clientSocket);
+            Thread newThred = new Thread(tcpClientHandler);
             newThred.start();
         }
     }

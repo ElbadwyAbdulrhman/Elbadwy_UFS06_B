@@ -8,11 +8,11 @@ import java.net.InetAddress;
 import java.net.Socket;
 
 
-public class ClientHandler implements Runnable{
+public class TcpClientHandler implements Runnable{
     private static Socket clientSocket = null;
     private PrintWriter out = null; // allocate to write answer to client.
 
-    public ClientHandler(Socket clientSocket) {
+    public TcpClientHandler(Socket clientSocket) {
         this.clientSocket = clientSocket;
         InetAddress address = clientSocket.getInetAddress();
         System.out.println(address);

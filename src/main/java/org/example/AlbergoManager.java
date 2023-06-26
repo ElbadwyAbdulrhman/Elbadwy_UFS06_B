@@ -63,4 +63,25 @@ public class AlbergoManager {
     public ArrayList getAlberghiListSorted() {
         return AlberghiListSorted;
     }
+
+    public String toHtmlAll(ArrayList<Albergo> e) {
+        StringBuilder htmlBuilder = new StringBuilder();
+        htmlBuilder.append("<html><head><title>Car List</title></head><body>");
+        htmlBuilder.append("<table style='border:1px solid black' border-spacing: 40px><tr><th>ID</th><th>Nome</th><th>Price</th><th>Descrizione</th><th>Suite</th></tr>");
+
+        for (Albergo car : e) {
+            htmlBuilder.append("<tr>");
+            htmlBuilder.append("<td>").append(car.getId()).append("</td>");
+            htmlBuilder.append("<td>").append(car.getName()).append("</td>");
+            htmlBuilder.append("<td>").append(car.getPrice()).append("</td>");
+            htmlBuilder.append("<td>").append(car.getDescrizione()).append("</td>");
+            htmlBuilder.append("<td>").append(car.isSuite()).append("</td>");
+            htmlBuilder.append("</tr>");
+        }
+
+        htmlBuilder.append("</table>");
+        htmlBuilder.append("</body></html>");
+
+        return htmlBuilder.toString();
+    }
 }

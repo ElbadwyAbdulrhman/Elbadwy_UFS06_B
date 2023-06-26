@@ -5,9 +5,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.InetAddress;
-import java.net.InetSocketAddress;
 import java.net.Socket;
-import java.util.List;
+
 
 public class ClientHandler implements Runnable{
     private static Socket clientSocket = null;
@@ -34,9 +33,6 @@ public class ClientHandler implements Runnable{
     Boolean readLoop(BufferedReader in, PrintWriter out) {
         // waits for data and reads it in until connection dies
         // readLine() blocks until the server receives a new line from client
-        /*- "all"
-    - "all_sorted"
-- "more_expensive_suite"*/
         String s = "";
         try {
             while ((s = in.readLine()) != null) {
@@ -53,7 +49,10 @@ public class ClientHandler implements Runnable{
                         out.println(AlbergoManager.getInstance().findMoreExpensiveSuite());
                         break;
                     default:
-                        out.println("wrong command");
+                        out.println("wrong command -- commands available : " +
+                                "[ all ]" +" "+
+                                "[ all_sorted ]" +" "+
+                                "[ more_expensive_suite ]");
                 }
                 out.flush();
             }

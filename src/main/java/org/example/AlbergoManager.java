@@ -15,7 +15,7 @@ public class AlbergoManager {
 
     private AlbergoManager() {
         this.AlberghiList.add(new Albergo("Albergo di lusso con vista mare",1,"Hotel Splendido",200,true));
-        this.AlberghiList.add(new Albergo("Albergo economico nel centro città",2,"Hotel Economico",50,false));
+        this.AlberghiList.add(new Albergo("Albergo economico nel centro citta'",2,"Hotel Economico",50,false));
         this.AlberghiList.add(new Albergo("Resort di lusso con piscina",3,"Resort Paradiso",300,true));
         this.AlberghiList.add(new Albergo("Albergo accogliente nelle colline",4,"Hotel Collinare",150,false));
         this.AlberghiList.add(new Albergo("Albergo di lusso in centro storico",5,"Hotel Storico",250,true));
@@ -35,7 +35,7 @@ public class AlbergoManager {
 
 
 
-    public Albergo findMostExpensiveCar() {
+    public String findMoreExpensiveSuite() {
         Albergo mostExpensiveSuite = null;
         double maxPrice = AlberghiList.get(0).getPrice();
 
@@ -45,8 +45,10 @@ public class AlbergoManager {
                 mostExpensiveSuite = alb;
             }
         }
+        Gson gson = new Gson();
 
-        return mostExpensiveSuite;
+
+        return gson.toJson(mostExpensiveSuite);
     }
 
     public void sortAlbByName() {

@@ -41,18 +41,20 @@ public class ClientHandler implements Runnable{
         try {
             while ((s = in.readLine()) != null) {
                 System.out.println(clientSocket+" : "+s);
-                if(s.equals("all")){
-                    out.println(Garage.getInstance().toJson(Garage.getInstance().getCarList()));
-                } else if (s.equals("somma")) {
-                    out.println("somma delle macchine nel garage : "+Garage.getInstance().somma());
-                } else if (s.equals("more_expensive")) {
-                    out.println("la machcina piu costosa e : "+Garage.getInstance().findMostExpensiveCar().toString());
-                } else if (s.equals("all_sorted")) {
-                    Garage.getInstance().sortCarsByBrand();
-                    out.println(Garage.getInstance().toJson(Garage.getInstance().getCarListSorted()));
-
-                } else
-                    out.println("wrong command");
+                switch (s){
+                    case "all":
+                        out.println(AlbergoManager.getInstance().toJson(AlbergoManager.getInstance().getAlberghiList()));
+                        break;
+                    case "all_sorted":
+                        AlbergoManager.getInstance().sortAlbByName();
+                        out.println(AlbergoManager.getInstance().toJson(AlbergoManager.getInstance().getAlberghiListSorted()));
+                        break;
+                    case "more_expensive_suite":
+                        out.println(AlbergoManager.getInstance().findMoreExpensiveSuite());
+                        break;
+                    default:
+                        out.println("wrong command");
+                }
                 out.flush();
             }
 

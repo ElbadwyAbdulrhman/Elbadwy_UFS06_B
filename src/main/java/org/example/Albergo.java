@@ -56,4 +56,15 @@ public class Albergo {
     public void setSuite(boolean suite) {
         this.suite = suite;
     }
+
+    @Override
+    public String toString() {
+        return "Albergo{" +
+                "descrizione='" + descrizione + '\'' +
+                ", id=" + id +
+                ", name='" + name + '\'' +
+                ", price=" + price +
+                ", suite=" + suite +
+                '}';
+    }
 }

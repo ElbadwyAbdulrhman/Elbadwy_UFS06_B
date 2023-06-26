@@ -15,10 +15,10 @@ public class AlbergoManager {
     private ArrayList AlberghiListSorted = new ArrayList();
 
     private AlbergoManager() {
-        this.AlberghiList.add(new Albergo("Albergo di lusso con vista mare",1,"Hotel Splendido",200,true));
+        this.AlberghiList.add(new Albergo("l'Albergo di lusso con vista mare",1,"Hotel Splendido",200,true));
         this.AlberghiList.add(new Albergo("Albergo economico nel centro citta'",2,"Hotel Economico",50,false));
         this.AlberghiList.add(new Albergo("Resort di lusso con piscina",3,"Resort Paradiso",300,true));
-        this.AlberghiList.add(new Albergo("Albergo accogliente nelle colline",4,"Hotel Collinare",150,false));
+        this.AlberghiList.add(new Albergo("Albergo accogliente nelle colline",4,"Hotel Collinare",1500,false));
         this.AlberghiList.add(new Albergo("Albergo di lusso in centro storico",5,"Hotel Storico",250,true));
     }
 
@@ -41,7 +41,7 @@ public class AlbergoManager {
         double maxPrice = AlberghiList.get(0).getPrice();
 
         for (Albergo alb : AlberghiList) {
-            if (alb.getPrice() > maxPrice) {
+            if (alb.getPrice() > maxPrice && alb.isSuite()) {
                 maxPrice = alb.getPrice();
                 mostExpensiveSuite = alb;
             }

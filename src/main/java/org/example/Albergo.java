@@ -1,5 +1,9 @@
 package org.example;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+
 public class Albergo {
     private String descrizione;
     private int id;
@@ -67,4 +71,6 @@ public class Albergo {
                 ", suite=" + suite +
                 '}';
     }
+
+
 }

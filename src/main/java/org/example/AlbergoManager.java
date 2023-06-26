@@ -3,6 +3,8 @@ package org.example;
 import java.util.*;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 
 import java.util.ArrayList;
 
@@ -66,16 +68,16 @@ public class AlbergoManager {
 
     public String toHtmlAll(ArrayList<Albergo> e) {
         StringBuilder htmlBuilder = new StringBuilder();
-        htmlBuilder.append("<html><head><title>Car List</title></head><body>");
+        htmlBuilder.append("<html><head><title>Alberghi</title></head><body>");
         htmlBuilder.append("<table style='border:1px solid black' border-spacing: 40px><tr><th>ID</th><th>Nome</th><th>Price</th><th>Descrizione</th><th>Suite</th></tr>");
 
-        for (Albergo car : e) {
+        for (Albergo albergo : e) {
             htmlBuilder.append("<tr>");
-            htmlBuilder.append("<td>").append(car.getId()).append("</td>");
-            htmlBuilder.append("<td>").append(car.getName()).append("</td>");
-            htmlBuilder.append("<td>").append(car.getPrice()).append("</td>");
-            htmlBuilder.append("<td>").append(car.getDescrizione()).append("</td>");
-            htmlBuilder.append("<td>").append(car.isSuite()).append("</td>");
+            htmlBuilder.append("<td>").append(albergo.getId()).append("</td>");
+            htmlBuilder.append("<td>").append(albergo.getName()).append("</td>");
+            htmlBuilder.append("<td>").append(albergo.getPrice()).append("</td>");
+            htmlBuilder.append("<td>").append(albergo.getDescrizione()).append("</td>");
+            htmlBuilder.append("<td>").append(albergo.isSuite()).append("</td>");
             htmlBuilder.append("</tr>");
         }
 
@@ -84,4 +86,26 @@ public class AlbergoManager {
 
         return htmlBuilder.toString();
     }
+
+    public String toHtmlSingle(String jsonString) {
+        Gson gson = new Gson();
+        JsonObject jsonObject = JsonParser.parseString(jsonString).getAsJsonObject();
+
+
+        StringBuilder htmlBuilder = new StringBuilder();
+        htmlBuilder.append("<html><head><title>Alberghi</title></head><body>");
+        htmlBuilder.append("<table style='border:1px solid black' border-spacing: 40px><tr><th>ID</th><th>Nome</th><th>Price</th><th>Descrizione</th><th>Suite</th></tr>");
+        htmlBuilder.append("<tr>");
+        htmlBuilder.append("<td>").append(jsonObject.get("id")).append("</td>");
+        htmlBuilder.append("<td>").append(jsonObject.get("name")).append("</td>");
+        htmlBuilder.append("<td>").append(jsonObject.get("price")).append("</td>");
+        htmlBuilder.append("<td>").append(jsonObject.get("descrizione")).append("</td>");
+        htmlBuilder.append("<td>").append(jsonObject.get("suite")).append("</td>");
+
+        htmlBuilder.append("</table></body></html>");
+
+        return htmlBuilder.toString();
+    }
+
+
 }

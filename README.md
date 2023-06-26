@@ -1,6 +1,9 @@
 Traccia A
 
+indirizzo ip : 172.16.150.38
+
 SERVER TCP : 
+porta : 1234
 
     comandi : 
     "all";
@@ -9,6 +12,7 @@ SERVER TCP :
     senza nessun carattere speciale , semplicemente la stringa
 
 SERVER HTTP :
+porta: 8000
 
     comandi :
     "?all";
